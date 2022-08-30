@@ -1,37 +1,11 @@
+from tabnanny import check
 from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox
+from PIL import ImageTk, Image
 import sqlite3
-from xml.dom.minidom import Identified
+import datetime
 
-
-
-class Bill(): 
-    def __init__(self, khachhang, phinSuaDa, phinDenDa, bacXiuDa, espresso, cappiccino, mocha, traSenVang, traThachDao, traThachVai, xanhDauDo, freezeTraXanh,
-                freezeSocola, freezeCookies, freezeXanhDauDo, freezeClassicPhin, chanhDaXay, chanhDayDa, tacDaVien, socola, suaChuaDa):
-
-                  self.name = khachhang[1]
-                  self.phone = khachhang[2]
-                  self.email = khachhang[3]
-                  self.phinSuaDa = [phinSuaDa[0], phinSuaDa[1], phinSuaDa[2]]
-                  self.phinDenDa = [phinDenDa[0], phinDenDa[1], phinDenDa[2]]
-                  self.bacXiuDa = [bacXiuDa[0], bacXiuDa[1], bacXiuDa[2]]
-                  self.espresso = [espresso[0], espresso[1], espresso[2]]
-                  self.cappiccino = [cappiccino[0], cappiccino[1], cappiccino[2]]
-                  self.mocha = [mocha[0], mocha[1], mocha[2]]
-                  self.traSenVang = [traSenVang[0], traSenVang[1], traSenVang[2]]
-                  self.traThachDao = [traThachDao[0], traThachDao[1], traThachDao[2]]
-                  self.traThachVai = [traThachVai[0], traThachVai[1], traThachVai[2]]
-                  self.xanhDauDo = [xanhDauDo[0], xanhDauDo[1], xanhDauDo[2]]
-                  self.freezeTraXanh = [freezeTraXanh[0], freezeTraXanh[1], freezeTraXanh[2]]
-                  self.freezeSocola = [freezeSocola[0], freezeSocola[1], freezeSocola[2]]
-                  self.freezeCookies = [freezeCookies[0], freezeCookies[1], freezeCookies[2]]
-                  self.freezeXanhDauDo = [freezeXanhDauDo[0], freezeXanhDauDo[1], freezeXanhDauDo[2]]
-                  self.freezeClassicPhin = [freezeClassicPhin[0], freezeClassicPhin[1], freezeClassicPhin[2]]
-                  self.chanhDaXay = [chanhDaXay[0], chanhDaXay[1], chanhDaXay[2]]
-                  self.chanhDayDa = [chanhDayDa[0], chanhDayDa[1], chanhDayDa[2]]
-                  self.tacDaVien = [tacDaVien[0], tacDaVien[1], tacDaVien[2]]
-                  self.socola = [socola[0], socola[1], socola[2]]
-                  self.suaChuaDa = [suaChuaDa[0], suaChuaDa[1], suaChuaDa[2]]
 
 class Manager():
     def __init__(self):
@@ -67,554 +41,6 @@ class Manager():
         #self.label_title.grid(row=0, column=0, ipadx=317, columnspan=2)
         self.label_title.pack(fill="x", pady=(10,0))
 
-    
-#     def topFrame(self):
-
-#         self.khachhang = ['','','']
-#         self.khachhang[0] = StringVar()
-#         self.khachhang[1] = StringVar()
-#         self.khachhang[2] = StringVar()
-
-#         self.phinSuaDa = [0,0,0]
-#         self.phinSuaDa[0] = IntVar()
-#         self.phinSuaDa[1] = IntVar()
-#         self.phinSuaDa[2] = IntVar()
-        
-#         self.phinDenDa = [0,0,0]
-#         self.phinDenDa[0] = IntVar()
-#         self.phinDenDa[1] = IntVar()
-#         self.phinDenDa[2] = IntVar()
-
-#         self.bacXiuDa = [0,0,0]
-#         self.bacXiuDa[0] = IntVar()
-#         self.bacXiuDa[1] = IntVar()
-#         self.bacXiuDa[2] = IntVar()
-
-#         self.espresso = [0,0,0]
-#         self.espresso[0] = IntVar()
-#         self.espresso[1] = IntVar()
-#         self.espresso[2] = IntVar()
-
-#         self.cappiccino = [0,0,0]
-#         self.cappiccino[0] = IntVar()
-#         self.cappiccino[1] = IntVar()
-#         self.cappiccino[2] = IntVar()
-
-#         self.mocha = [0,0,0]
-#         self.mocha[0] = IntVar()
-#         self.mocha[1] = IntVar()
-#         self.mocha[2] = IntVar()
-
-#         self.traSenVang = [0,0,0]
-#         self.traSenVang[0] = IntVar()
-#         self.traSenVang[1] = IntVar()
-#         self.traSenVang[2] = IntVar()
-
-#         self.traThachDao = [0,0,0]
-#         self.traThachDao[0] = IntVar()
-#         self.traThachDao[1] = IntVar()
-#         self.traThachDao[2] = IntVar()
-
-#         self.traThachVai = [0,0,0]
-#         self.traThachVai[0] = IntVar()
-#         self.traThachVai[1] = IntVar()
-#         self.traThachVai[2] = IntVar()
-
-#         self.xanhDauDo = [0,0,0]
-#         self.xanhDauDo[0] = IntVar()
-#         self.xanhDauDo[1] = IntVar()
-#         self.xanhDauDo[2] = IntVar()
-
-#         self.freezeTraXanh = [0,0,0]
-#         self.freezeTraXanh[0] = IntVar()
-#         self.freezeTraXanh[1] = IntVar()
-#         self.freezeTraXanh[2] = IntVar()
-
-#         self.freezeSocola = [0,0,0]
-#         self.freezeSocola[0] = IntVar()
-#         self.freezeSocola[1] = IntVar()
-#         self.freezeSocola[2] = IntVar()
-
-#         self.freezeCookies = [0,0,0]
-#         self.freezeCookies[0] = IntVar()
-#         self.freezeCookies[1] = IntVar()
-#         self.freezeCookies[2] = IntVar()
-
-#         self.freezeXanhDauDo = [0,0,0]
-#         self.freezeXanhDauDo[0] = IntVar()
-#         self.freezeXanhDauDo[1] = IntVar()
-#         self.freezeXanhDauDo[2] = IntVar()
-
-#         self.freezeClassicPhin = [0,0,0]
-#         self.freezeClassicPhin[0] = IntVar()
-#         self.freezeClassicPhin[1] = IntVar()
-#         self.freezeClassicPhin[2] = IntVar()
-
-#         self.chanhDaXay = [0,0,0]
-#         self.chanhDaXay[0] = IntVar()
-#         self.chanhDaXay[1] = IntVar()
-#         self.chanhDaXay[2] = IntVar()
-
-#         self.chanhDayDa = [0,0,0]
-#         self.chanhDayDa[0] = IntVar()
-#         self.chanhDayDa[1] = IntVar()
-#         self.chanhDayDa[2] = IntVar()
-
-#         self.tacDaVien = [0,0,0]
-#         self.tacDaVien[0] = IntVar()
-#         self.tacDaVien[1] = IntVar()
-#         self.tacDaVien[2] = IntVar()
-
-#         self.socola = [0,0,0]
-#         self.socola[0] = IntVar()
-#         self.socola[1] = IntVar()
-#         self.socola[2] = IntVar()
-
-#         self.suaChuaDa = [0,0,0]
-#         self.suaChuaDa[0] = IntVar()
-#         self.suaChuaDa[1] = IntVar()
-#         self.suaChuaDa[2] = IntVar()
-        
-#         self.wrapper1 = LabelFrame(self.root, bd=5, bg="#FFE699")
-#         self.wrapper1.pack(fill="both", expand="yes", padx=10, pady=10)
-#         self.mycanvas = Canvas(self.wrapper1, width=900, height=200, highlightthickness=0, bg="#FFE699")
-#         self.mycanvas.pack(side=LEFT, fill="y", padx=10)
-
-#         yscrollbar = ttk.Scrollbar(self.wrapper1, orient="vertical", command=self.mycanvas.yview)
-#         yscrollbar.pack(side=RIGHT, fill="y")
-#         self.mycanvas.configure(yscrollcommand=yscrollbar.set)
-#         self.mycanvas.bind('<Configure>', lambda e: self.mycanvas.configure(scrollregion = self.mycanvas.bbox('all')))
-#         self.myframe = Frame(self.mycanvas, bg="#FFE699")
-#         self.mycanvas.create_window((0,0), window=self.myframe, anchor="nw")
-
-
-#         #---LABEL: CÀ PHÊ PHA PHIN
-#         self.label_name = Label(self.myframe, text="CÀ PHÊ PHA PHIN", bg="#FFE699", font=('Calibri(Body) 11 bold italic underline'))
-#         self.label_name.grid(row=0, column=0, pady=(10,0), sticky="w")
-        
-#         # Label: Phin Sữa Đá
-#         self.label_name = Label(self.myframe, text="Phin Sữa Đá", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=1, column=0, pady=(10,0), sticky="w")
-#         # Size: Phin Sữa Đá
-#         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=1, column=1, pady=(10,0), sticky="w", padx=(100,0))
-#         self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.phinSuaDa[0])
-#         self.entry1_1.grid(row=1, column=2, pady=(10,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=1, column=3, pady=(10,0), padx=(30,0), sticky="w")
-#         self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.phinSuaDa[1])
-#         self.entry1_2.grid(row=1, column=4, pady=(10,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=1, column=5, pady=(10,0), padx=(30,0),sticky="w")
-#         self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.phinSuaDa[2])
-#         self.entry1_3.grid(row=1, column=6, pady=(10,0), sticky="w")
-
-#         #Label: Phin Đen Đá
-#         self.label_name = Label(self.myframe, text="Phin Đen Đá", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=2, column=0, pady=(5,0), sticky="w")
-#         #Size: Phin Đen Đá
-#         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=2, column=1, pady=(5,0), sticky="w", padx=(100,0))
-#         self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.phinDenDa[0])
-#         self.entry1_1.grid(row=2, column=2, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=2, column=3, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.phinDenDa[0])
-#         self.entry1_2.grid(row=2, column=4, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=2, column=5, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.phinDenDa[2])
-#         self.entry1_3.grid(row=2, column=6, pady=(5,0), sticky="w")
-
-#         #Label: Bạc Xĩu Đá
-#         self.label_name = Label(self.myframe, text="Bạc Xĩu Đá", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=3, column=0, pady=(5,0), sticky="w")
-#         #Size: Bạc Xĩu Đá 
-#         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=3, column=1, pady=(5,0), sticky="w", padx=(100,0))
-#         self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.bacXiuDa[0])
-#         self.entry1_1.grid(row=3, column=2, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=3, column=3, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.bacXiuDa[1])
-#         self.entry1_2.grid(row=3, column=4, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=3, column=5, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.bacXiuDa[2])
-#         self.entry1_3.grid(row=3, column=6, pady=(5,0), sticky="w")
-
-#         #---LABEL: CÀ PHÊ ESPRESSO
-#         self.label_name = Label(self.myframe, text="CÀ PHÊ ESPRESSO", bg="#FFE699", font=('Calibri(Body) 11 bold italic underline'))
-#         self.label_name.grid(row=4, column=0, pady=(10,0), sticky="w")
-        
-#         # Label: Espresso/Americano
-#         self.label_name = Label(self.myframe, text="Espresso/Americano", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=5, column=0, pady=(10,0), sticky="w")
-#         # Size: Espresso/Americano
-#         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=5, column=1, pady=(10,0), sticky="w", padx=(100,0))
-#         self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.espresso[0])
-#         self.entry1_1.grid(row=5, column=2, pady=(10,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=5, column=3, pady=(10,0), padx=(30,0), sticky="w")
-#         self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.espresso[1])
-#         self.entry1_2.grid(row=5, column=4, pady=(10,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=5, column=5, pady=(10,0), padx=(30,0),sticky="w")
-#         self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.espresso[2])
-#         self.entry1_3.grid(row=5, column=6, pady=(10,0), sticky="w")
-
-#         #Label: Cappuccino/Latte
-#         self.label_name = Label(self.myframe, text="Cappuccino/Latte", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=6, column=0, pady=(5,0), sticky="w")
-#         #Size: Cappuccino/Latte
-#         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=6, column=1, pady=(5,0), sticky="w", padx=(100,0))
-#         self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.cappiccino[0])
-#         self.entry1_1.grid(row=6, column=2, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=6, column=3, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.cappiccino[1])
-#         self.entry1_2.grid(row=6, column=4, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=6, column=5, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.cappiccino[2])
-#         self.entry1_3.grid(row=6, column=6, pady=(5,0), sticky="w")
-
-#         #Label: Mocha/Macchiato
-#         self.label_name = Label(self.myframe, text="Mocha/Macchiato", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=7, column=0, pady=(5,0), sticky="w")
-#         #Size: Mocha/Macchiato
-#         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=7, column=1, pady=(5,0), sticky="w", padx=(100,0))
-#         self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.mocha[0])
-#         self.entry1_1.grid(row=7, column=2, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=7, column=3, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.mocha[1])
-#         self.entry1_2.grid(row=7, column=4, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=7, column=5, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.mocha[2])
-#         self.entry1_3.grid(row=7, column=6, pady=(5,0), sticky="w")
-
-#         #---LABEL: TRÀ
-#         self.label_name = Label(self.myframe, text="TRÀ", bg="#FFE699", font=('Calibri(Body) 11 bold italic underline'))
-#         self.label_name.grid(row=8, column=0, pady=(10,0), sticky="w")
-        
-#         # Label: Sen Vàng
-#         self.label_name = Label(self.myframe, text="Sen Vàng", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=9, column=0, pady=(10,0), sticky="w")
-#         # Size: Sen Vàng
-#         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=9, column=1, pady=(10,0), sticky="w", padx=(100,0))
-#         self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.traSenVang[0])
-#         self.entry1_1.grid(row=9, column=2, pady=(10,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=9, column=3, pady=(10,0), padx=(30,0), sticky="w")
-#         self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.traSenVang[1])
-#         self.entry1_2.grid(row=9, column=4, pady=(10,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=9, column=5, pady=(10,0), padx=(30,0),sticky="w")
-#         self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.traSenVang[2])
-#         self.entry1_3.grid(row=9, column=6, pady=(10,0), sticky="w")
-
-#         #Label: Thạch Đào
-#         self.label_name = Label(self.myframe, text="Thạch Đào", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=10, column=0, pady=(5,0), sticky="w")
-#         #Size: Thạch Đào
-#         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=10, column=1, pady=(5,0), sticky="w", padx=(100,0))
-#         self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.traThachDao[0])
-#         self.entry1_1.grid(row=10, column=2, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=10, column=3, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.traThachDao[1])
-#         self.entry1_2.grid(row=10, column=4, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=10, column=5, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.traThachDao[2])
-#         self.entry1_3.grid(row=10, column=6, pady=(5,0), sticky="w")
-
-#         #Label: Thạch Vải
-#         self.label_name = Label(self.myframe, text="Thạch Vải", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=11, column=0, pady=(5,0), sticky="w")
-#         #Size: Thạch Vải
-#         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=11, column=1, pady=(5,0), sticky="w", padx=(100,0))
-#         self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.traThachVai[0])
-#         self.entry1_1.grid(row=11, column=2, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=11, column=3, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.traThachVai[1])
-#         self.entry1_2.grid(row=11, column=4, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=11, column=5, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.traThachVai[2])
-#         self.entry1_3.grid(row=11, column=6, pady=(5,0), sticky="w")
-
-#         #Label: Xanh Đậu Đỏ
-#         self.label_name = Label(self.myframe, text="Xanh Đậu Đỏ", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=12, column=0, pady=(5,0), sticky="w")
-#         #Size: Xanh Đậu Đỏ
-#         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=12, column=1, pady=(5,0), sticky="w", padx=(100,0))
-#         self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.xanhDauDo[0])
-#         self.entry1_1.grid(row=12, column=2, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=12, column=3, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.xanhDauDo[1])
-#         self.entry1_2.grid(row=12, column=4, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=12, column=5, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.xanhDauDo[2])
-#         self.entry1_3.grid(row=12, column=6, pady=(5,0), sticky="w")
-
-#         #---LABEL: FREEZE
-#         self.label_name = Label(self.myframe, text="FREEZE", bg="#FFE699", font=('Calibri(Body) 11 bold italic underline'))
-#         self.label_name.grid(row=13, column=0, pady=(10,0), sticky="w")
-        
-#         # Label: Trà Xanh
-#         self.label_name = Label(self.myframe, text="Trà Xanh", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=14, column=0, pady=(10,0), sticky="w")
-#         # Size: Trà Xanh
-#         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=14, column=1, pady=(10,0), sticky="w", padx=(100,0))
-#         self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeTraXanh[0])
-#         self.entry1_1.grid(row=14, column=2, pady=(10,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=14, column=3, pady=(10,0), padx=(30,0), sticky="w")
-#         self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeTraXanh[1])
-#         self.entry1_2.grid(row=14, column=4, pady=(10,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=14, column=5, pady=(10,0), padx=(30,0),sticky="w")
-#         self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeTraXanh[2])
-#         self.entry1_3.grid(row=14, column=6, pady=(10,0), sticky="w")
-
-#         #Label: Sô-cô-la
-#         self.label_name = Label(self.myframe, text="Sô-cô-la", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=15, column=0, pady=(5,0), sticky="w")
-#         #Size: Sô-cô-la
-#         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=15, column=1, pady=(5,0), sticky="w", padx=(100,0))
-#         self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeSocola[0])
-#         self.entry1_1.grid(row=15, column=2, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=15, column=3, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeSocola[1])
-#         self.entry1_2.grid(row=15, column=4, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=15, column=5, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeSocola[2])
-#         self.entry1_3.grid(row=15, column=6, pady=(5,0), sticky="w")
-
-#         #Label: Cookies & Cream
-#         self.label_name = Label(self.myframe, text="Cookies & Cream", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=16, column=0, pady=(5,0), sticky="w")
-#         #Size: Cookies & Cream
-#         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=16, column=1, pady=(5,0), sticky="w", padx=(100,0))
-#         self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeCookies[0])
-#         self.entry1_1.grid(row=16, column=2, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=16, column=3, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeCookies[1])
-#         self.entry1_2.grid(row=16, column=4, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=16, column=5, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeCookies[2])
-#         self.entry1_3.grid(row=16, column=6, pady=(5,0), sticky="w")
-
-#         #Label: Caramel Phin
-#         self.label_name = Label(self.myframe, text="Xanh Đậu Đỏ", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=17, column=0, pady=(5,0), sticky="w")
-#         #Size: Caramel Phin
-#         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=17, column=1, pady=(5,0), sticky="w", padx=(100,0))
-#         self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeXanhDauDo[0])
-#         self.entry1_1.grid(row=17, column=2, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=17, column=3, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeXanhDauDo[1])
-#         self.entry1_2.grid(row=17, column=4, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=17, column=5, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeXanhDauDo[2])
-#         self.entry1_3.grid(row=17, column=6, pady=(5,0), sticky="w")
-
-#         #Label: Classic Phin
-#         self.label_name = Label(self.myframe, text="Classic Phin", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=19, column=0, pady=(5,0), sticky="w")
-#         #Size: Classic Phin
-#         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=19, column=1, pady=(5,0), sticky="w", padx=(100,0))
-#         self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeClassicPhin[0])
-#         self.entry1_1.grid(row=19, column=2, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=19, column=3, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeClassicPhin[1])
-#         self.entry1_2.grid(row=19, column=4, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=19, column=5, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeClassicPhin[2])
-#         self.entry1_3.grid(row=19, column=6, pady=(5,0), sticky="w")
-
-#         #---LABEL: THỨC UỐNG KHÁC
-#         self.label_name = Label(self.myframe, text="THỨC UỐNG KHÁC", bg="#FFE699", font=('Calibri(Body) 11 bold italic underline'))
-#         self.label_name.grid(row=20, column=0, pady=(10,0), sticky="w")
-        
-#         # Label: Chanh Đá Xay
-#         self.label_name = Label(self.myframe, text="Chanh Đá Xay", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=21, column=0, pady=(10,0), sticky="w")
-#         # Size: Chanh Đá Xay
-#         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=21, column=1, pady=(10,0), sticky="w", padx=(100,0))
-#         self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.chanhDaXay[0])
-#         self.entry1_1.grid(row=21, column=2, pady=(10,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=21, column=3, pady=(10,0), padx=(30,0), sticky="w")
-#         self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.chanhDaXay[1])
-#         self.entry1_2.grid(row=21, column=4, pady=(10,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=21, column=5, pady=(10,0), padx=(30,0),sticky="w")
-#         self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.chanhDaXay[2])
-#         self.entry1_3.grid(row=21, column=6, pady=(10,0), sticky="w")
-
-#         #Label: Chanh Dây Đá
-#         self.label_name = Label(self.myframe, text="Chanh Dây Đá", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=22, column=0, pady=(5,0), sticky="w")
-#         #Size: Chanh Dây Đá
-#         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=22, column=1, pady=(5,0), sticky="w", padx=(100,0))
-#         self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.chanhDayDa[0])
-#         self.entry1_1.grid(row=22, column=2, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=22, column=3, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.chanhDayDa[1])
-#         self.entry1_2.grid(row=22, column=4, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=22, column=5, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.chanhDayDa[2])
-#         self.entry1_3.grid(row=22, column=6, pady=(5,0), sticky="w")
-
-#         #Label: Tắc Đá Viên
-#         self.label_name = Label(self.myframe, text="Tắc Đá Viên", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=23, column=0, pady=(5,0), sticky="w")
-#         #Size: Tắc Đá Viên
-#         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=23, column=1, pady=(5,0), sticky="w", padx=(100,0))
-#         self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.tacDaVien[0])
-#         self.entry1_1.grid(row=23, column=2, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=23, column=3, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.tacDaVien[1])
-#         self.entry1_2.grid(row=23, column=4, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=23, column=5, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.tacDaVien[2])
-#         self.entry1_3.grid(row=23, column=6, pady=(5,0), sticky="w")
-
-#         #Label: Sô-cô-la
-#         self.label_name = Label(self.myframe, text="Sô-cô-la", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=24, column=0, pady=(5,0), sticky="w")
-#         #Size: Sô-cô-la
-#         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=24, column=1, pady=(5,0), sticky="w", padx=(100,0))
-#         self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.socola[0])
-#         self.entry1_1.grid(row=24, column=2, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=24, column=3, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.socola[1])
-#         self.entry1_2.grid(row=24, column=4, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=24, column=5, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.socola[2])
-#         self.entry1_3.grid(row=24, column=6, pady=(5,0), sticky="w")
-
-#         #Label: Sữa Chua Đá
-#         self.label_name = Label(self.myframe, text="Sữa Chua Đá", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=25, column=0, pady=(5,0), sticky="w")
-#         #Size: Classic Phin
-#         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=25, column=1, pady=(5,0), sticky="w", padx=(100,0))
-#         self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.suaChuaDa[0])
-#         self.entry1_1.grid(row=25, column=2, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=25, column=3, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.suaChuaDa[1])
-#         self.entry1_2.grid(row=25, column=4, pady=(5,0), sticky="w")
-#         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
-#         self.label_size.grid(row=25, column=5, pady=(5,0), padx=(30,0), sticky="w")
-#         self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.suaChuaDa[2])
-#         self.entry1_3.grid(row=25, column=6, pady=(5,0), sticky="w")
-
-#         #---LABEL: THÔNG TIN KHÁCH HÀNG
-#         self.label_name = Label(self.myframe, text="THÔNG TIN KHÁCH HÀNG", bg="#FFE699", font=('Calibri(Body) 11 bold italic underline'))
-#         self.label_name.grid(row=26, column=0, pady=(10,0), sticky="w")
-        
-#         # Label: Họ và tên
-#         self.label_name = Label(self.myframe, text="Họ tên: ", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=27, column=0, pady=(10,0), sticky="w")
-#         # Entry: Họ và tên
-#         self.entry_name = ttk.Entry(self.myframe, width=30, font=('Calibri(Body) 12'), textvariable=self.khachhang[0])
-#         self.entry_name.grid(row=27, column=0, padx=20, pady=(10,0), columnspan=2)
-
-#         # Label: Số điện thoại
-#         self.label_name = Label(self.myframe, text="SĐT: ", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=28, column=0, pady=(10,0), sticky="w")
-#         # Entry: Số điện thoại
-#         self.entry_name = ttk.Entry(self.myframe, width=30, font=('Calibri(Body) 12'), textvariable=self.khachhang[1])
-#         self.entry_name.grid(row=28, column=0, padx=20, pady=(10,0), columnspan=2)
-
-#         # Label: Email
-#         self.label_name = Label(self.myframe, text="Email: ", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-#         self.label_name.grid(row=29, column=0, pady=(10,10), sticky="w")
-#         # Entry: Email
-#         self.entry_name = ttk.Entry(self.myframe, width=30, font=('Calibri(Body) 12'), textvariable=self.khachhang[2])
-#         self.entry_name.grid(row=29, column=0, padx=20, pady=(10,10), columnspan=2)
-# ##
-
-    # def bottomFrame(self):
-    #     self.date = StringVar()
-
-    #     self.wrapper2 = LabelFrame(self.root, bd=5, bg="#FFE699")
-    #     self.wrapper2.pack(fill="both", expand="yes", padx=10, pady=10)
-
-    #     #Label: Nhập ngày
-    #     self.label_name = Label(self.wrapper2, text="Nhập ngày: ", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-    #     self.label_name.grid(row=0, column=0, pady=(10,0), padx=(10,0), sticky="w")
-    #     #Entry: Nhập ngày
-    #     self.entry_name = ttk.Entry(self.wrapper2, width=16, font=('Calibri(Body) 12'), textvariable=self.date)
-    #     self.entry_name.grid(row=0, column=1, pady=(10,0))
-
-
-    #     #Button: Tìm kiếm
-    #     self.btn_search = Button(self.wrapper2, text="Tìm kiếm", bg="#FF6600", fg="#000000", font=('Calibri(Body) 11 bold'), bd=5, highlightcolor="#000000", width=25)
-    #     self.btn_search.grid(row=1, column=0, columnspan=2, pady=(10,0), padx=(10,0), sticky="w")
-
-    #     #Button: Xem tất cả hóa đơn
-    #     self.btn_search = Button(self.wrapper2, text="Xem tất cả hóa đơn", bg="#FF6600", fg="#000000", font=('Calibri(Body) 11 bold'), bd=5, highlightcolor="#000000", width=25)
-    #     self.btn_search.grid(row=2, column=0, columnspan=2, pady=(10,0), padx=(10,0), sticky="w")
-
-    #     #Label: Nhập ID
-    #     self.label_name = Label(self.wrapper2, text="Nhập ID: ", bg="#FFE699", font=('Calibri(Body) 11 bold '))
-    #     self.label_name.grid(row=0, column=3, pady=(10,0), padx=(130,0), sticky="w")
-    #     #Entry: Nhập ID
-    #     self.entry_name = ttk.Entry(self.wrapper2, width=18, font=('Calibri(Body) 12'), textvariable=self.date)
-    #     self.entry_name.grid(row=0, column=4, pady=(10,0))
-
-
-    #     #Button: Chi tiết hóa đơn
-    #     self.btn_search = Button(self.wrapper2, text="Chi tiết hóa đơn", bg="#FF6600", fg="#000000", font=('Calibri(Body) 11 bold'), bd=5, highlightcolor="#000000", width=25)
-    #     self.btn_search.grid(row=1, column=3, columnspan=2, pady=(10,0), padx=(130,0), sticky="w")
-
-    #     #Button: Xóa
-    #     self.btn_search = Button(self.wrapper2, text="Xóa", bg="#FF6600", fg="#000000", font=('Calibri(Body) 11 bold'), bd=5, highlightcolor="#000000", width=7)
-    #     self.btn_search.grid(row=2, column=3, pady=(10,0), padx=(130,0), sticky="w")
-
-    #     #Button: Chỉnh sửa
-    #     self.btn_search = Button(self.wrapper2, text="Chỉnh sửa", bg="#FF6600", fg="#000000", font=('Calibri(Body) 11 bold'), bd=5, highlightcolor="#000000", width=12)
-    #     self.btn_search.grid(row=2, column=4, columnspan=2, pady=(10,0), padx=(8,0), sticky="w")
 
 
 class infoFrame():
@@ -631,91 +57,97 @@ class infoFrame():
         self.myframe = Frame(self.mycanvas, bg="#FFE699")
         self.mycanvas.create_window((0,0), window=self.myframe, anchor="nw")
 
-        self.khachhang = ['','','']
-        self.khachhang[0] = StringVar()
-        self.khachhang[1] = StringVar()
-        self.khachhang[2] = StringVar()
-        self.phinSuaDa = [0,0,0]
-        self.phinSuaDa[0] = IntVar()
-        self.phinSuaDa[1] = IntVar()
-        self.phinSuaDa[2] = IntVar()
-        self.phinDenDa = [0,0,0]
-        self.phinDenDa[0] = IntVar()
-        self.phinDenDa[1] = IntVar()
-        self.phinDenDa[2] = IntVar()
-        self.bacXiuDa = [0,0,0]
-        self.bacXiuDa[0] = IntVar()
-        self.bacXiuDa[1] = IntVar()
-        self.bacXiuDa[2] = IntVar()
-        self.espresso = [0,0,0]
-        self.espresso[0] = IntVar()
-        self.espresso[1] = IntVar()
-        self.espresso[2] = IntVar()
-        self.cappiccino = [0,0,0]
-        self.cappiccino[0] = IntVar()
-        self.cappiccino[1] = IntVar()
-        self.cappiccino[2] = IntVar()
-        self.mocha = [0,0,0]
-        self.mocha[0] = IntVar()
-        self.mocha[1] = IntVar()
-        self.mocha[2] = IntVar()
-        self.traSenVang = [0,0,0]
-        self.traSenVang[0] = IntVar()
-        self.traSenVang[1] = IntVar()
-        self.traSenVang[2] = IntVar()
-        self.traThachDao = [0,0,0]
-        self.traThachDao[0] = IntVar()
-        self.traThachDao[1] = IntVar()
-        self.traThachDao[2] = IntVar()
-        self.traThachVai = [0,0,0]
-        self.traThachVai[0] = IntVar()
-        self.traThachVai[1] = IntVar()
-        self.traThachVai[2] = IntVar()
-        self.xanhDauDo = [0,0,0]
-        self.xanhDauDo[0] = IntVar()
-        self.xanhDauDo[1] = IntVar()
-        self.xanhDauDo[2] = IntVar()
-        self.freezeTraXanh = [0,0,0]
-        self.freezeTraXanh[0] = IntVar()
-        self.freezeTraXanh[1] = IntVar()
-        self.freezeTraXanh[2] = IntVar()
-        self.freezeSocola = [0,0,0]
-        self.freezeSocola[0] = IntVar()
-        self.freezeSocola[1] = IntVar()
-        self.freezeSocola[2] = IntVar()
-        self.freezeCookies = [0,0,0]
-        self.freezeCookies[0] = IntVar()
-        self.freezeCookies[1] = IntVar()
-        self.freezeCookies[2] = IntVar()
-        self.freezeXanhDauDo = [0,0,0]
-        self.freezeXanhDauDo[0] = IntVar()
-        self.freezeXanhDauDo[1] = IntVar()
-        self.freezeXanhDauDo[2] = IntVar()
-        self.freezeClassicPhin = [0,0,0]
-        self.freezeClassicPhin[0] = IntVar()
-        self.freezeClassicPhin[1] = IntVar()
-        self.freezeClassicPhin[2] = IntVar()
-        self.chanhDaXay = [0,0,0]
-        self.chanhDaXay[0] = IntVar()
-        self.chanhDaXay[1] = IntVar()
-        self.chanhDaXay[2] = IntVar()
-        self.chanhDayDa = [0,0,0]
-        self.chanhDayDa[0] = IntVar()
-        self.chanhDayDa[1] = IntVar()
-        self.chanhDayDa[2] = IntVar()
-        self.tacDaVien = [0,0,0]
-        self.tacDaVien[0] = IntVar()
-        self.tacDaVien[1] = IntVar()
-        self.tacDaVien[2] = IntVar()
-        self.socola = [0,0,0]
-        self.socola[0] = IntVar()
-        self.socola[1] = IntVar()
-        self.socola[2] = IntVar()
-        self.suaChuaDa = [0,0,0]
-        self.suaChuaDa[0] = IntVar()
-        self.suaChuaDa[1] = IntVar()
-        self.suaChuaDa[2] = IntVar()
-    
+        #Create a list of variables
+        self.var = ['', '', '', [0,0,0], [0,0,0], [0,0,0], [0,0,0], [0,0,0], [0,0,0], [0,0,0], [0,0,0], [0,0,0], 
+                        [0,0,0], [0,0,0], [0,0,0], [0,0,0], [0,0,0], [0,0,0], [0,0,0], [0,0,0], [0,0,0], [0,0,0], [0,0,0], 0, '']
+        
+        self.var[0] = StringVar() # Name
+        self.var[1] = StringVar() # Phone
+        self.var[2] = StringVar() # Email
+
+        self.var[3][0] = IntVar() # Phin Sữa Đá
+        self.var[3][1] = IntVar() 
+        self.var[3][2] = IntVar() 
+         
+        self.var[4][0] = IntVar() # Phin Đen Đá
+        self.var[4][1] = IntVar() 
+        self.var[4][2] = IntVar()
+        
+        self.var[5][0] = IntVar() # Bạc Xĩu Đá
+        self.var[5][1] = IntVar() 
+        self.var[5][2] = IntVar() 
+        
+        self.var[6][0] = IntVar() # Espresso
+        self.var[6][1] = IntVar() 
+        self.var[6][2] = IntVar()
+        
+        self.var[7][0] = IntVar() # Cappuccino
+        self.var[7][1] = IntVar()
+        self.var[7][2] = IntVar()
+        
+        self.var[8][0] = IntVar() # Mocha
+        self.var[8][1] = IntVar()
+        self.var[8][2] = IntVar()
+        
+        self.var[9][0] = IntVar() # Trà Sen Vàng
+        self.var[9][1] = IntVar()
+        self.var[9][2] = IntVar()
+        
+        self.var[10][0] = IntVar() # Trà Thạch Đào
+        self.var[10][1] = IntVar()
+        self.var[10][2] = IntVar()
+        
+        self.var[11][0] = IntVar() # Trà Thạch Vải
+        self.var[11][1] = IntVar()
+        self.var[11][2] = IntVar()
+        
+        self.var[12][0] = IntVar() # Trà xanh đậu đỏ
+        self.var[12][1] = IntVar()
+        self.var[12][2] = IntVar()
+        
+        self.var[13][0] = IntVar() # Freeze Trà Xanh
+        self.var[13][1] = IntVar()
+        self.var[13][2] = IntVar()
+        
+        self.var[14][0] = IntVar() # Freeze Sô-cô-la
+        self.var[14][1] = IntVar()
+        self.var[14][2] = IntVar()
+        
+        self.var[15][0] = IntVar() # Freeze Cookies
+        self.var[15][1] = IntVar()
+        self.var[15][2] = IntVar()
+        
+        self.var[16][0] = IntVar() # Freeze Xanh Đậu Đỏ
+        self.var[16][1] = IntVar()
+        self.var[16][2] = IntVar()
+        
+        self.var[17][0] = IntVar() # Freeze Classic Phin
+        self.var[17][1] = IntVar() 
+        self.var[17][2] = IntVar()
+        
+        self.var[18][0] = IntVar() # Chanh Đá Xay
+        self.var[18][1] = IntVar()
+        self.var[18][2] = IntVar()
+        
+        self.var[19][0] = IntVar() # Chanh Dây Đá
+        self.var[19][1] = IntVar()
+        self.var[19][2] = IntVar()
+
+        self.var[20][0] = IntVar() # Tắc Đá Viên
+        self.var[20][1] = IntVar()
+        self.var[20][2] = IntVar()
+
+        self.var[21][0] = IntVar() # Sô-cô-la
+        self.var[21][1] = IntVar() 
+        self.var[21][2] = IntVar()
+
+        self.var[22][0] = IntVar() # Sữa Chua Đá
+        self.var[22][1] = IntVar()
+        self.var[22][2] = IntVar()
+
+        self.var[23] = 0 # Total cost 
+        
+
     def show(self):
         #---LABEL: CÀ PHÊ PHA PHIN
         self.label_name = Label(self.myframe, text="CÀ PHÊ PHA PHIN", bg="#FFE699", font=('Calibri(Body) 11 bold italic underline'))
@@ -727,15 +159,15 @@ class infoFrame():
         # Size: Phin Sữa Đá
         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=1, column=1, pady=(10,0), sticky="w", padx=(100,0))
-        self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.phinSuaDa[0])
+        self.entry1_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[3][0])
         self.entry1_1.grid(row=1, column=2, pady=(10,0), sticky="w")
         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=1, column=3, pady=(10,0), padx=(30,0), sticky="w")
-        self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.phinSuaDa[1])
+        self.entry1_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[3][1])
         self.entry1_2.grid(row=1, column=4, pady=(10,0), sticky="w")
         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=1, column=5, pady=(10,0), padx=(30,0),sticky="w")
-        self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.phinSuaDa[2])
+        self.entry1_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[3][2])
         self.entry1_3.grid(row=1, column=6, pady=(10,0), sticky="w")
 
         #Label: Phin Đen Đá
@@ -744,15 +176,15 @@ class infoFrame():
         #Size: Phin Đen Đá
         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=2, column=1, pady=(5,0), sticky="w", padx=(100,0))
-        self.entry2_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.phinDenDa[0])
+        self.entry2_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[4][0])
         self.entry2_1.grid(row=2, column=2, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=2, column=3, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry2_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.phinDenDa[1])
+        self.entry2_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[4][1])
         self.entry2_2.grid(row=2, column=4, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=2, column=5, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry2_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.phinDenDa[2])
+        self.entry2_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[4][2])
         self.entry2_3.grid(row=2, column=6, pady=(5,0), sticky="w")
 
         #Label: Bạc Xĩu Đá
@@ -761,15 +193,15 @@ class infoFrame():
         #Size: Bạc Xĩu Đá 
         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=3, column=1, pady=(5,0), sticky="w", padx=(100,0))
-        self.entry3_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.bacXiuDa[0])
+        self.entry3_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[5][0])
         self.entry3_1.grid(row=3, column=2, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=3, column=3, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry3_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.bacXiuDa[1])
+        self.entry3_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[5][1])
         self.entry3_2.grid(row=3, column=4, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=3, column=5, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry3_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.bacXiuDa[2])
+        self.entry3_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[5][2])
         self.entry3_3.grid(row=3, column=6, pady=(5,0), sticky="w")
 
         #---LABEL: CÀ PHÊ ESPRESSO
@@ -782,15 +214,15 @@ class infoFrame():
         # Size: Espresso/Americano
         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=5, column=1, pady=(10,0), sticky="w", padx=(100,0))
-        self.entry4_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.espresso[0])
+        self.entry4_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[6][0])
         self.entry4_1.grid(row=5, column=2, pady=(10,0), sticky="w")
         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=5, column=3, pady=(10,0), padx=(30,0), sticky="w")
-        self.entry4_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.espresso[1])
+        self.entry4_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[6][1])
         self.entry4_2.grid(row=5, column=4, pady=(10,0), sticky="w")
         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=5, column=5, pady=(10,0), padx=(30,0),sticky="w")
-        self.entry4_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.espresso[2])
+        self.entry4_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[6][2])
         self.entry4_3.grid(row=5, column=6, pady=(10,0), sticky="w")
 
         #Label: Cappuccino/Latte
@@ -799,15 +231,15 @@ class infoFrame():
         #Size: Cappuccino/Latte
         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=6, column=1, pady=(5,0), sticky="w", padx=(100,0))
-        self.entry5_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.cappiccino[0])
+        self.entry5_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[7][0])
         self.entry5_1.grid(row=6, column=2, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=6, column=3, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry5_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.cappiccino[1])
+        self.entry5_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[7][1])
         self.entry5_2.grid(row=6, column=4, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=6, column=5, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry5_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.cappiccino[2])
+        self.entry5_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[7][2])
         self.entry5_3.grid(row=6, column=6, pady=(5,0), sticky="w")
 
         #Label: Mocha/Macchiato
@@ -816,15 +248,15 @@ class infoFrame():
         #Size: Mocha/Macchiato
         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=7, column=1, pady=(5,0), sticky="w", padx=(100,0))
-        self.entry6_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.mocha[0])
+        self.entry6_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[8][0])
         self.entry6_1.grid(row=7, column=2, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=7, column=3, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry6_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.mocha[1])
+        self.entry6_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[8][1])
         self.entry6_2.grid(row=7, column=4, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=7, column=5, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry6_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.mocha[2])
+        self.entry6_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[8][2])
         self.entry6_3.grid(row=7, column=6, pady=(5,0), sticky="w")
 
         #---LABEL: TRÀ
@@ -837,15 +269,15 @@ class infoFrame():
         # Size: Sen Vàng
         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=9, column=1, pady=(10,0), sticky="w", padx=(100,0))
-        self.entry7_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.traSenVang[0])
+        self.entry7_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[9][0])
         self.entry7_1.grid(row=9, column=2, pady=(10,0), sticky="w")
         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=9, column=3, pady=(10,0), padx=(30,0), sticky="w")
-        self.entry7_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.traSenVang[1])
+        self.entry7_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[9][1])
         self.entry7_2.grid(row=9, column=4, pady=(10,0), sticky="w")
         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=9, column=5, pady=(10,0), padx=(30,0),sticky="w")
-        self.entry7_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.traSenVang[2])
+        self.entry7_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[9][2])
         self.entry7_3.grid(row=9, column=6, pady=(10,0), sticky="w")
 
         #Label: Thạch Đào
@@ -854,15 +286,15 @@ class infoFrame():
         #Size: Thạch Đào
         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=10, column=1, pady=(5,0), sticky="w", padx=(100,0))
-        self.entry8_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.traThachDao[0])
+        self.entry8_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[10][0])
         self.entry8_1.grid(row=10, column=2, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=10, column=3, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry8_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.traThachDao[1])
+        self.entry8_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[10][1])
         self.entry8_2.grid(row=10, column=4, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=10, column=5, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry8_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.traThachDao[2])
+        self.entry8_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[10][2])
         self.entry8_3.grid(row=10, column=6, pady=(5,0), sticky="w")
 
         #Label: Thạch Vải
@@ -871,15 +303,15 @@ class infoFrame():
         #Size: Thạch Vải
         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=11, column=1, pady=(5,0), sticky="w", padx=(100,0))
-        self.entry9_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.traThachVai[0])
+        self.entry9_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[11][0])
         self.entry9_1.grid(row=11, column=2, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=11, column=3, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry9_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.traThachVai[1])
+        self.entry9_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[11][1])
         self.entry9_2.grid(row=11, column=4, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=11, column=5, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry9_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.traThachVai[2])
+        self.entry9_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[11][2])
         self.entry9_3.grid(row=11, column=6, pady=(5,0), sticky="w")
 
         #Label: Xanh Đậu Đỏ
@@ -888,15 +320,15 @@ class infoFrame():
         #Size: Xanh Đậu Đỏ
         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=12, column=1, pady=(5,0), sticky="w", padx=(100,0))
-        self.entry10_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.xanhDauDo[0])
+        self.entry10_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[12][0])
         self.entry10_1.grid(row=12, column=2, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=12, column=3, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry10_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.xanhDauDo[1])
+        self.entry10_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[12][1])
         self.entry10_2.grid(row=12, column=4, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=12, column=5, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry10_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.xanhDauDo[2])
+        self.entry10_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[12][2])
         self.entry10_3.grid(row=12, column=6, pady=(5,0), sticky="w")
 
         #---LABEL: FREEZE
@@ -909,15 +341,15 @@ class infoFrame():
         # Size: Trà Xanh
         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=14, column=1, pady=(10,0), sticky="w", padx=(100,0))
-        self.entry11_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeTraXanh[0])
+        self.entry11_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[13][0])
         self.entry11_1.grid(row=14, column=2, pady=(10,0), sticky="w")
         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=14, column=3, pady=(10,0), padx=(30,0), sticky="w")
-        self.entry11_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeTraXanh[1])
+        self.entry11_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[13][1])
         self.entry11_2.grid(row=14, column=4, pady=(10,0), sticky="w")
         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=14, column=5, pady=(10,0), padx=(30,0),sticky="w")
-        self.entry11_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeTraXanh[2])
+        self.entry11_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[13][2])
         self.entry11_3.grid(row=14, column=6, pady=(10,0), sticky="w")
 
         #Label: Sô-cô-la
@@ -926,15 +358,15 @@ class infoFrame():
         #Size: Sô-cô-la
         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=15, column=1, pady=(5,0), sticky="w", padx=(100,0))
-        self.entry12_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeSocola[0])
+        self.entry12_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[14][0])
         self.entry12_1.grid(row=15, column=2, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=15, column=3, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry12_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeSocola[1])
+        self.entry12_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[14][1])
         self.entry12_2.grid(row=15, column=4, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=15, column=5, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry12_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeSocola[2])
+        self.entry12_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[14][2])
         self.entry12_3.grid(row=15, column=6, pady=(5,0), sticky="w")
 
         #Label: Cookies & Cream
@@ -943,15 +375,15 @@ class infoFrame():
         #Size: Cookies & Cream
         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=16, column=1, pady=(5,0), sticky="w", padx=(100,0))
-        self.entry13_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeCookies[0])
+        self.entry13_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[15][0])
         self.entry13_1.grid(row=16, column=2, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=16, column=3, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry13_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeCookies[1])
+        self.entry13_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[15][1])
         self.entry13_2.grid(row=16, column=4, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=16, column=5, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry13_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeCookies[2])
+        self.entry13_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[15][2])
         self.entry13_3.grid(row=16, column=6, pady=(5,0), sticky="w")
 
         #Label: Caramel Phin
@@ -960,15 +392,15 @@ class infoFrame():
         #Size: Caramel Phin
         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=17, column=1, pady=(5,0), sticky="w", padx=(100,0))
-        self.entry14_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeXanhDauDo[0])
+        self.entry14_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[16][0])
         self.entry14_1.grid(row=17, column=2, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=17, column=3, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry14_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeXanhDauDo[1])
+        self.entry14_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[16][1])
         self.entry14_2.grid(row=17, column=4, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=17, column=5, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry14_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeXanhDauDo[2])
+        self.entry14_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[16][2])
         self.entry14_3.grid(row=17, column=6, pady=(5,0), sticky="w")
 
         #Label: Classic Phin
@@ -977,15 +409,15 @@ class infoFrame():
         #Size: Classic Phin
         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=19, column=1, pady=(5,0), sticky="w", padx=(100,0))
-        self.entry15_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeClassicPhin[0])
+        self.entry15_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[17][0])
         self.entry15_1.grid(row=19, column=2, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=19, column=3, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry15_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeClassicPhin[1])
+        self.entry15_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[17][1])
         self.entry15_2.grid(row=19, column=4, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=19, column=5, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry15_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.freezeClassicPhin[2])
+        self.entry15_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[17][2])
         self.entry15_3.grid(row=19, column=6, pady=(5,0), sticky="w")
 
         #---LABEL: THỨC UỐNG KHÁC
@@ -998,15 +430,15 @@ class infoFrame():
         # Size: Chanh Đá Xay
         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=21, column=1, pady=(10,0), sticky="w", padx=(100,0))
-        self.entry16_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.chanhDaXay[0])
+        self.entry16_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[18][0])
         self.entry16_1.grid(row=21, column=2, pady=(10,0), sticky="w")
         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=21, column=3, pady=(10,0), padx=(30,0), sticky="w")
-        self.entry16_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.chanhDaXay[1])
+        self.entry16_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[18][1])
         self.entry16_2.grid(row=21, column=4, pady=(10,0), sticky="w")
         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=21, column=5, pady=(10,0), padx=(30,0),sticky="w")
-        self.entry16_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.chanhDaXay[2])
+        self.entry16_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[18][2])
         self.entry16_3.grid(row=21, column=6, pady=(10,0), sticky="w")
 
         #Label: Chanh Dây Đá
@@ -1015,15 +447,15 @@ class infoFrame():
         #Size: Chanh Dây Đá
         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=22, column=1, pady=(5,0), sticky="w", padx=(100,0))
-        self.entry17_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.chanhDayDa[0])
+        self.entry17_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[19][0])
         self.entry17_1.grid(row=22, column=2, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=22, column=3, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry17_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.chanhDayDa[1])
+        self.entry17_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[19][1])
         self.entry17_2.grid(row=22, column=4, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=22, column=5, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry17_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.chanhDayDa[2])
+        self.entry17_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[19][2])
         self.entry17_3.grid(row=22, column=6, pady=(5,0), sticky="w")
 
         #Label: Tắc Đá Viên
@@ -1032,15 +464,15 @@ class infoFrame():
         #Size: Tắc Đá Viên
         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=23, column=1, pady=(5,0), sticky="w", padx=(100,0))
-        self.entry18_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.tacDaVien[0])
+        self.entry18_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[20][0])
         self.entry18_1.grid(row=23, column=2, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=23, column=3, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry18_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.tacDaVien[1])
+        self.entry18_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[20][1])
         self.entry18_2.grid(row=23, column=4, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=23, column=5, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry18_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.tacDaVien[2])
+        self.entry18_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[20][2])
         self.entry18_3.grid(row=23, column=6, pady=(5,0), sticky="w")
 
         #Label: Sô-cô-la
@@ -1049,15 +481,15 @@ class infoFrame():
         #Size: Sô-cô-la
         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=24, column=1, pady=(5,0), sticky="w", padx=(100,0))
-        self.entry19_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.socola[0])
+        self.entry19_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[21][0])
         self.entry19_1.grid(row=24, column=2, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=24, column=3, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry19_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.socola[1])
+        self.entry19_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[21][1])
         self.entry19_2.grid(row=24, column=4, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=24, column=5, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry19_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.socola[2])
+        self.entry19_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[21][2])
         self.entry19_3.grid(row=24, column=6, pady=(5,0), sticky="w")
 
         #Label: Sữa Chua Đá
@@ -1066,68 +498,89 @@ class infoFrame():
         #Size: Sữa Chua Đá
         self.label_size = Label(self.myframe, text="Nhỏ (30.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=25, column=1, pady=(5,0), sticky="w", padx=(100,0))
-        self.entry20_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.suaChuaDa[0])
+        self.entry20_1 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[22][0])
         self.entry20_1.grid(row=25, column=2, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Vừa (40.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=25, column=3, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry20_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.suaChuaDa[1])
+        self.entry20_2 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[22][1])
         self.entry20_2.grid(row=25, column=4, pady=(5,0), sticky="w")
         self.label_size = Label(self.myframe, text="Lớn (50.000đ):", bg="#FFE699", font=('Calibri(Body) 11'))
         self.label_size.grid(row=25, column=5, pady=(5,0), padx=(30,0), sticky="w")
-        self.entry20_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.suaChuaDa[2])
+        self.entry20_3 = ttk.Entry(self.myframe, font=('Calibri(Body) 11'), width=3, textvariable=self.var[22][2])
         self.entry20_3.grid(row=25, column=6, pady=(5,0), sticky="w")
 
-        #---LABEL: THÔNG TIN KHÁCH HÀNG
-        self.label_name = Label(self.myframe, text="THÔNG TIN KHÁCH HÀNG", bg="#FFE699", font=('Calibri(Body) 11 bold italic underline'))
+        #---LABEL: THÔNG TIN THANH TOÁN
+        self.label_name = Label(self.myframe, text="THÔNG TIN THANH TOÁN", bg="#FFE699", font=('Calibri(Body) 11 bold italic underline'))
         self.label_name.grid(row=26, column=0, pady=(10,0), sticky="w")
         
         # Label: Họ và tên
         self.label_name = Label(self.myframe, text="Họ tên: ", bg="#FFE699", font=('Calibri(Body) 11 bold '))
         self.label_name.grid(row=27, column=0, pady=(10,0), sticky="w")
         # Entry: Họ và tên
-        self.entry_name = ttk.Entry(self.myframe, width=30, font=('Calibri(Body) 12'), textvariable=self.khachhang[0])
+        self.entry_name = ttk.Entry(self.myframe, width=30, font=('Calibri(Body) 12'), textvariable=self.var[0])
         self.entry_name.grid(row=27, column=0, padx=20, pady=(10,0), columnspan=2)
 
         # Label: Số điện thoại
         self.label_name = Label(self.myframe, text="SĐT: ", bg="#FFE699", font=('Calibri(Body) 11 bold '))
         self.label_name.grid(row=28, column=0, pady=(10,0), sticky="w")
         # Entry: Số điện thoại
-        self.entry_phone = ttk.Entry(self.myframe, width=30, font=('Calibri(Body) 12'), textvariable=self.khachhang[1])
+        self.entry_phone = ttk.Entry(self.myframe, width=30, font=('Calibri(Body) 12'), textvariable=self.var[1])
         self.entry_phone.grid(row=28, column=0, padx=20, pady=(10,0), columnspan=2)
 
         # Label: Email
         self.label_name = Label(self.myframe, text="Email: ", bg="#FFE699", font=('Calibri(Body) 11 bold '))
         self.label_name.grid(row=29, column=0, pady=(10,10), sticky="w")
         # Entry: Email
-        self.entry_email = ttk.Entry(self.myframe, width=30, font=('Calibri(Body) 12'), textvariable=self.khachhang[2])
+        self.entry_email = ttk.Entry(self.myframe, width=30, font=('Calibri(Body) 12'), textvariable=self.var[2])
         self.entry_email.grid(row=29, column=0, padx=20, pady=(10,10), columnspan=2)
 
+
+
+def date():
+    date_res = '' 
+    today = datetime.datetime.today()
+    date_res += str(today.day)
+    month = str(today.month)
+    if (int(month) < 10):
+        month = '0'+str(today.month)
+    date_res += month
+    year = str(today.year)
+    date_res += year[2:]
+    return date_res
+
+record_glb = 0
+def loadID():
+    connect = sqlite3.connect('data.db')
+    cursor = connect.cursor()
+    global record_glb
+    try:
+        cursor.execute("SELECT *, oid FROM addresses")
+        records = cursor.fetchall()
+        for record in records:
+            record_glb = record[65]
+    except:
+        print("No data initialized")
+
+    connect.commit()
+    return record_glb
+
+def indexID(i):
+    if (i < 10):
+        return '000' + str(i)
+    elif (i < 100):
+        return '00' + str(i)
+    elif (i < 1000):
+        return '0' + str(i)
+    else:
+        return str(i)
+
+def total_update(s1, s2, s3):
+    return int(s1)*30+int(s2)*40+int(s3)*50
 
 class buttonFrame(): 
     def __init__(self, root, topframe): 
         self.root = root
         self.topframe = topframe
-        self.khachhang = topframe.khachhang
-        self.phinSuaDa = topframe.phinSuaDa
-        self.phinDenDa = topframe.phinDenDa
-        self.bacXiuDa = topframe.bacXiuDa
-        self.espresso = topframe.espresso
-        self.cappiccino = topframe.cappiccino
-        self.mocha = topframe.mocha
-        self.traSenVang = topframe.traSenVang
-        self.traThachDao = topframe.traThachDao
-        self.traThachVai = topframe.traThachVai
-        self.xanhDauDo = topframe.xanhDauDo
-        self.freezeTraXanh = topframe.freezeTraXanh
-        self.freezeSocola = topframe.freezeSocola
-        self.freezeCookies = topframe.freezeCookies
-        self.freezeXanhDauDo = topframe.freezeXanhDauDo
-        self.freezeClassicPhin = topframe.freezeClassicPhin
-        self.chanhDaXay = topframe.chanhDaXay
-        self.chanhDayDa = topframe.chanhDayDa
-        self.tacDaVien = topframe.tacDaVien
-        self.socola = topframe.socola
-        self.suaChuaDa = topframe.suaChuaDa
 
     def showButton(self):
         self.date = StringVar()
@@ -1136,57 +589,58 @@ class buttonFrame():
         self.wrapper2 = LabelFrame(self.root, bd=5, bg="#FFE699")
         self.wrapper2.pack(fill="both", expand="yes", padx=10, pady=10)
 
-        #Label: Nhập ngày
-        self.label_name = Label(self.wrapper2, text="Nhập ngày: ", bg="#FFE699", font=('Calibri(Body) 11 bold '))
+        #Label: Hôm nay
+        self.label_name = Label(self.wrapper2, text="Hôm nay: ", bg="#FFE699", font=('Calibri(Body) 11 bold '))
         self.label_name.grid(row=0, column=0, pady=(10,0), padx=(10,0), sticky="w")
-        #Entry: Nhập ngày
-        self.entry = ttk.Entry(self.wrapper2, width=16, font=('Calibri(Body) 12'), textvariable=self.date)
-        self.entry.grid(row=0, column=1, pady=(10,0))
-
-
-        #Button: Tìm kiếm
-        self.btn_search = Button(self.wrapper2, text="Tìm kiếm", bg="#FF6600", fg="#000000", font=('Calibri(Body) 11 bold'), bd=5, highlightcolor="#000000", width=25)
-        self.btn_search.grid(row=1, column=0, columnspan=2, pady=(10,0), padx=(10,0), sticky="w")
+        #Entry: Hôm nay
+        today = datetime.datetime.today()
+        self.entry_date = ttk.Entry(self.wrapper2, width=16, font=('Calibri(Body) 12 italic'))
+        self.entry_date.insert(0, f"{today:%a, %b %d, %Y}")
+        self.entry_date.grid(row=0, column=1, pady=(10,0))
 
         #Button: Xem tất cả hóa đơn
-        self.btn_search = Button(self.wrapper2, text="Xem tất cả hóa đơn", bg="#FF6600", fg="#000000", font=('Calibri(Body) 11 bold'), bd=5, highlightcolor="#000000", width=25)
-        self.btn_search.grid(row=2, column=0, columnspan=2, pady=(10,0), padx=(10,0), sticky="w")
+        self.btn_search = Button(self.wrapper2, text="Xem tất cả hóa đơn", bg="#FF6600", fg="#000000", font=('Calibri(Body) 11 bold'), bd=5, highlightcolor="#000000", width=24, height=4, command=self.query)
+        self.btn_search.grid(row=1, column=0, rowspan=2,columnspan=2, pady=(10,0), padx=(10,0), sticky="w")
 
         #Label: Nhập ID
         self.label_name = Label(self.wrapper2, text="Nhập ID: ", bg="#FFE699", font=('Calibri(Body) 11 bold '))
         self.label_name.grid(row=0, column=3, pady=(10,0), padx=(130,0), sticky="w")
         #Entry: Nhập ID
-        self.entry_name = ttk.Entry(self.wrapper2, width=18, font=('Calibri(Body) 12'), textvariable=self.id)
-        self.entry_name.grid(row=0, column=4, pady=(10,0))
+        self.entry_id = ttk.Entry(self.wrapper2, width=18, font=('Calibri(Body) 12'), textvariable=self.id)
+        self.entry_id.grid(row=0, column=4, pady=(10,0))
 
-        #Button: Chi tiết hóa đơn
-        self.btn_search = Button(self.wrapper2, text="Chi tiết hóa đơn", bg="#FF6600", fg="#000000", font=('Calibri(Body) 11 bold'), bd=5, highlightcolor="#000000", width=26, command=self.query)
+        #Button: Xem hóa đơn
+        self.btn_search = Button(self.wrapper2, text="Xem hóa đơn", bg="#FF6600", fg="#000000", font=('Calibri(Body) 11 bold'), bd=5, highlightcolor="#000000", width=26, command=lambda: self.edit(self.id.get()))
         self.btn_search.grid(row=1, column=3, columnspan=2, pady=(10,0), padx=(130,0), sticky="w")
 
         #Button: Xóa
-        self.btn_search = Button(self.wrapper2, text="Xóa", bg="#FF6600", fg="#000000", font=('Calibri(Body) 11 bold'), bd=5, highlightcolor="#000000", width=7)
+        self.btn_search = Button(self.wrapper2, text="Xóa", bg="#FF6600", fg="#000000", font=('Calibri(Body) 11 bold'), bd=5, highlightcolor="#000000", width=7, command=lambda: self.delete(self.id.get()))
         self.btn_search.grid(row=2, column=3, pady=(10,0), padx=(130,0), sticky="w")
 
         #Button: Chỉnh sửa
-        self.btn_search = Button(self.wrapper2, text="Chỉnh sửa", bg="#FF6600", fg="#000000", font=('Calibri(Body) 11 bold'), bd=5, highlightcolor="#000000", width=16, command=self.edit)
+        self.btn_search = Button(self.wrapper2, text="Chỉnh sửa", bg="#FF6600", fg="#000000", font=('Calibri(Body) 11 bold'), bd=5, highlightcolor="#000000", width=16, command=lambda: self.edit(self.id.get()))
         self.btn_search.grid(row=2, column=4, columnspan=2, pady=(10,0), padx=(10,0), sticky="w")
 
         #Label: ID
         self.label_name = Label(self.wrapper2, text="ID: ", bg="#FFE699", font=('Calibri(Body) 11 bold '))
         self.label_name.grid(row=0, column=5, pady=(10,0), padx=(130,0), sticky="w")
         #Entry: ID - DISABLED
-        self.entry_name = ttk.Entry(self.wrapper2, width=18 ,font=('Calibri(Body) 12 bold'))
-        self.entry_name.insert(0, "HT280822NB00001")
-        #self.entry_name.config(state=DISABLED)
-        self.entry_name.grid(row=0, column=6, pady=(10,0))
+        self.entry_id_current = ttk.Entry(self.wrapper2, width=18 ,font=('Calibri(Body) 12 bold'))
+        self.entry_id_current.insert(0, "HT" + date() + "AN" + indexID(loadID() + 1))
+        self.entry_id_current.grid(row=0, column=6, pady=(10,0))
 
         #Button: Thêm hóa đơn
         self.btn_search = Button(self.wrapper2, text="Thêm", bg="#FF6600", fg="#000000", font=('Calibri(Body) 11 bold'), bd=5, highlightcolor="#000000", width=20, height=4, command=self.submit)
         self.btn_search.grid(row=1, column=5, rowspan=2, columnspan=2, pady=(10,0), padx=(130,0), sticky="w")
 
     def submit(self):
-        self.connect = sqlite3.connect('data.db') # Kết nối với database
+        self.connect = sqlite3.connect('data.db') # Make connection to database
         self.cursor = connect.cursor()
+
+        # Calculate the total cost of one bill
+        for i in range(3,23):
+            self.topframe.var[23] += self.topframe.var[i][0].get()*30 + self.topframe.var[i][1].get()*40 + self.topframe.var[i][2].get()*50
+    
 
         # Insert into table
         self.cursor.execute (""" INSERT INTO addresses VALUES (
@@ -1210,53 +664,254 @@ class buttonFrame():
             :chanhDayDa1, :chanhDayDa2, :chanhDayDa3,
             :tacDaVien1, :tacDaVien2, :tacDaVien3,
             :socola1, :socola2, :socola3, 
-            :suaChuaDa1, :suaChuaDa2, :suaChuaDa3 
+            :suaChuaDa1, :suaChuaDa2, :suaChuaDa3, 
+            :totalCost, :ID
             )""",
                 {
-                    'name': self.khachhang[0].get(), 'phone': self.khachhang[1].get(), 'email': self.khachhang[2].get(),
-                    'phinSuaDa1': self.phinSuaDa[0].get(), 'phinSuaDa2': self.phinSuaDa[1].get(), 'phinSuaDa3': self.phinSuaDa[2].get(), 
-                    'phinDenDa1': self.phinDenDa[0].get(), 'phinDenDa2': self.phinDenDa[1].get(), 'phinDenDa3': self.phinDenDa[2].get(),
-                    'bacXiuDa1': self.bacXiuDa[0].get(), 'bacXiuDa2': self.bacXiuDa[1].get(), 'bacXiuDa3': self.bacXiuDa[2].get(),
-                    'espresso1': self.espresso[0].get(), 'espresso2': self.espresso[1].get(), 'espresso3': self.espresso[2].get(),
-                    'cappiccino1': self.cappiccino[0].get(), 'cappiccino2': self.cappiccino[1].get(), 'cappiccino3': self.cappiccino[2].get(),
-                    'mocha1': self.mocha[0].get(), 'mocha2': self.mocha[1].get(), 'mocha3': self.mocha[2].get(),
-                    'traSenVang1': self.traSenVang[0].get(), 'traSenVang2': self.traSenVang[1].get(), 'traSenVang3': self.traSenVang[2].get(), 
-                    'traThachDao1': self.traThachDao[0].get(), 'traThachDao2': self.traThachDao[1].get(), 'traThachDao3': self.traThachDao[2].get(), 
-                    'traThachVai1': self.traThachVai[0].get(), 'traThachVai2': self.traThachVai[1].get(), 'traThachVai3': self.traThachVai[2].get(),
-                    'xanhDauDo1': self.xanhDauDo[0].get(), 'xanhDauDo2': self.xanhDauDo[1].get(), 'xanhDauDo3': self.xanhDauDo[2].get(), 
-                    'freezeTraXanh1': self.freezeTraXanh[0].get(), 'freezeTraXanh2': self.freezeTraXanh[1].get(), 'freezeTraXanh3': self.freezeTraXanh[2].get(), 
-                    'freezeSocola1': self.freezeSocola[0].get(), 'freezeSocola2': self.freezeSocola[1].get(), 'freezeSocola3': self.freezeSocola[2].get(), 
-                    'freezeCookies1': self.freezeCookies[0].get(), 'freezeCookies2': self.freezeCookies[1].get(), 'freezeCookies3': self.freezeCookies[2].get(),
-                    'freezeXanhDauDo1': self.freezeXanhDauDo[0].get(), 'freezeXanhDauDo2': self.freezeXanhDauDo[1].get(), 'freezeXanhDauDo3': self.freezeXanhDauDo[2].get(), 
-                    'freezeClassicPhin1': self.freezeClassicPhin[0].get(), 'freezeClassicPhin2': self.freezeClassicPhin[1].get(), 'freezeClassicPhin3': self.freezeClassicPhin[2].get(),
-                    'chanhDaXay1': self.chanhDaXay[0].get(), 'chanhDaXay2': self.chanhDaXay[1].get(), 'chanhDaXay3': self.chanhDaXay[2].get(),
-                    'chanhDayDa1': self.chanhDayDa[0].get(), 'chanhDayDa2': self.chanhDayDa[1].get(), 'chanhDayDa3': self.chanhDayDa[2].get(),
-                    'tacDaVien1': self.tacDaVien[0].get(), 'tacDaVien2': self.tacDaVien[1].get(), 'tacDaVien3': self.tacDaVien[2].get(),
-                    'socola1': self.socola[0].get(), 'socola2': self.socola[1].get(), 'socola3': self.socola[2].get(), 
-                    'suaChuaDa1': self.suaChuaDa[0].get(), 'suaChuaDa2': self.suaChuaDa[1].get(), 'suaChuaDa3': self.suaChuaDa[2].get() 
+                    'name': self.topframe.var[0].get(), 'phone': self.topframe.var[1].get(), 'email': self.topframe.var[2].get(),
+                    'phinSuaDa1': self.topframe.var[3][0].get(), 'phinSuaDa2': self.topframe.var[3][1].get(), 'phinSuaDa3': self.topframe.var[3][2].get(), 
+                    'phinDenDa1': self.topframe.var[4][0].get(), 'phinDenDa2': self.topframe.var[4][1].get(), 'phinDenDa3': self.topframe.var[4][2].get(),
+                    'bacXiuDa1': self.topframe.var[5][0].get(), 'bacXiuDa2': self.topframe.var[5][1].get(), 'bacXiuDa3': self.topframe.var[5][2].get(),
+                    'espresso1': self.topframe.var[6][0].get(), 'espresso2': self.topframe.var[6][1].get(), 'espresso3': self.topframe.var[6][2].get(),
+                    'cappiccino1': self.topframe.var[7][0].get(), 'cappiccino2': self.topframe.var[7][1].get(), 'cappiccino3': self.topframe.var[7][2].get(),
+                    'mocha1': self.topframe.var[8][0].get(), 'mocha2': self.topframe.var[8][1].get(), 'mocha3': self.topframe.var[8][2].get(),
+                    'traSenVang1': self.topframe.var[9][0].get(), 'traSenVang2': self.topframe.var[9][1].get(), 'traSenVang3': self.topframe.var[9][2].get(), 
+                    'traThachDao1': self.topframe.var[10][0].get(), 'traThachDao2': self.topframe.var[10][1].get(), 'traThachDao3': self.topframe.var[10][2].get(), 
+                    'traThachVai1': self.topframe.var[11][0].get(), 'traThachVai2': self.topframe.var[11][1].get(), 'traThachVai3': self.topframe.var[11][2].get(),
+                    'xanhDauDo1': self.topframe.var[12][0].get(), 'xanhDauDo2': self.topframe.var[12][1].get(), 'xanhDauDo3': self.topframe.var[12][2].get(), 
+                    'freezeTraXanh1': self.topframe.var[13][0].get(), 'freezeTraXanh2': self.topframe.var[13][1].get(), 'freezeTraXanh3': self.topframe.var[13][2].get(), 
+                    'freezeSocola1': self.topframe.var[14][0].get(), 'freezeSocola2': self.topframe.var[14][1].get(), 'freezeSocola3': self.topframe.var[14][2].get(), 
+                    'freezeCookies1': self.topframe.var[15][0].get(), 'freezeCookies2': self.topframe.var[15][1].get(), 'freezeCookies3': self.topframe.var[15][2].get(),
+                    'freezeXanhDauDo1': self.topframe.var[16][0].get(), 'freezeXanhDauDo2': self.topframe.var[16][1].get(), 'freezeXanhDauDo3': self.topframe.var[16][2].get(), 
+                    'freezeClassicPhin1': self.topframe.var[17][0].get(), 'freezeClassicPhin2': self.topframe.var[17][1].get(), 'freezeClassicPhin3': self.topframe.var[17][2].get(),
+                    'chanhDaXay1': self.topframe.var[18][0].get(), 'chanhDaXay2': self.topframe.var[18][1].get(), 'chanhDaXay3': self.topframe.var[18][2].get(),
+                    'chanhDayDa1': self.topframe.var[19][0].get(), 'chanhDayDa2': self.topframe.var[19][1].get(), 'chanhDayDa3': self.topframe.var[19][2].get(),
+                    'tacDaVien1': self.topframe.var[20][0].get(), 'tacDaVien2': self.topframe.var[20][1].get(), 'tacDaVien3': self.topframe.var[20][2].get(),
+                    'socola1': self.topframe.var[21][0].get(), 'socola2': self.topframe.var[21][1].get(), 'socola3': self.topframe.var[21][2].get(), 
+                    'suaChuaDa1': self.topframe.var[22][0].get(), 'suaChuaDa2': self.topframe.var[22][1].get(), 'suaChuaDa3': self.topframe.var[22][2].get(),
+                    'totalCost': self.topframe.var[23], 'ID': self.entry_id_current.get()
                 })
 
         connect.commit()
+
+        # Update ID entry
+        self.entry_id_current.delete(0, END)
+        self.entry_id_current.insert(0, "HT" + date() + "AN" + indexID(loadID() + 1))
         # Clear the text boxes
         self.topframe.entry1_1.delete(0, END)
         self.topframe.entry1_1.insert(0, 0)
-    
-    def query(self):
-        connect = sqlite3.connect('data.db')
-        cursor = connect.cursor()
+        self.topframe.entry1_2.delete(0, END)
+        self.topframe.entry1_2.insert(0, 0)
+        self.topframe.entry1_3.delete(0, END)
+        self.topframe.entry1_3.insert(0, 0)
 
+        self.topframe.entry2_1.delete(0, END)
+        self.topframe.entry2_1.insert(0, 0)
+        self.topframe.entry2_2.delete(0, END)
+        self.topframe.entry2_2.insert(0, 0)
+        self.topframe.entry2_3.delete(0, END)
+        self.topframe.entry2_3.insert(0, 0)
+
+        self.topframe.entry3_1.delete(0, END)
+        self.topframe.entry3_1.insert(0, 0)
+        self.topframe.entry3_2.delete(0, END)
+        self.topframe.entry3_2.insert(0, 0)
+        self.topframe.entry3_3.delete(0, END)
+        self.topframe.entry3_3.insert(0, 0)
+
+        self.topframe.entry4_1.delete(0, END)
+        self.topframe.entry4_1.insert(0, 0)
+        self.topframe.entry4_2.delete(0, END)
+        self.topframe.entry4_2.insert(0, 0)
+        self.topframe.entry4_3.delete(0, END)
+        self.topframe.entry4_3.insert(0, 0)
+
+        self.topframe.entry5_1.delete(0, END)
+        self.topframe.entry5_1.insert(0, 0)
+        self.topframe.entry5_2.delete(0, END)
+        self.topframe.entry5_2.insert(0, 0)
+        self.topframe.entry5_3.delete(0, END)
+        self.topframe.entry5_3.insert(0, 0)
+
+        self.topframe.entry6_1.delete(0, END)
+        self.topframe.entry6_1.insert(0, 0)
+        self.topframe.entry6_2.delete(0, END)
+        self.topframe.entry6_2.insert(0, 0)
+        self.topframe.entry6_3.delete(0, END)
+        self.topframe.entry6_3.insert(0, 0)
+
+        self.topframe.entry7_1.delete(0, END)
+        self.topframe.entry7_1.insert(0, 0)
+        self.topframe.entry7_2.delete(0, END)
+        self.topframe.entry7_2.insert(0, 0)
+        self.topframe.entry7_3.delete(0, END)
+        self.topframe.entry7_3.insert(0, 0)
+
+        self.topframe.entry8_1.delete(0, END)
+        self.topframe.entry8_1.insert(0, 0)
+        self.topframe.entry8_2.delete(0, END)
+        self.topframe.entry8_2.insert(0, 0)
+        self.topframe.entry8_3.delete(0, END)
+        self.topframe.entry8_3.insert(0, 0)
+
+        self.topframe.entry9_1.delete(0, END)
+        self.topframe.entry9_1.insert(0, 0)
+        self.topframe.entry9_2.delete(0, END)
+        self.topframe.entry9_2.insert(0, 0)
+        self.topframe.entry9_3.delete(0, END)
+        self.topframe.entry9_3.insert(0, 0)
+
+        self.topframe.entry10_1.delete(0, END)
+        self.topframe.entry10_1.insert(0, 0)
+        self.topframe.entry10_2.delete(0, END)
+        self.topframe.entry10_2.insert(0, 0)
+        self.topframe.entry10_3.delete(0, END)
+        self.topframe.entry10_3.insert(0, 0)
+
+        self.topframe.entry11_1.delete(0, END)
+        self.topframe.entry11_1.insert(0, 0)
+        self.topframe.entry11_2.delete(0, END)
+        self.topframe.entry11_2.insert(0, 0)
+        self.topframe.entry11_3.delete(0, END)
+        self.topframe.entry11_3.insert(0, 0)
+
+        self.topframe.entry12_1.delete(0, END)
+        self.topframe.entry12_1.insert(0, 0)
+        self.topframe.entry12_2.delete(0, END)
+        self.topframe.entry12_2.insert(0, 0)
+        self.topframe.entry12_3.delete(0, END)
+        self.topframe.entry12_3.insert(0, 0)
+
+        self.topframe.entry13_1.delete(0, END)
+        self.topframe.entry13_1.insert(0, 0)
+        self.topframe.entry13_2.delete(0, END)
+        self.topframe.entry13_2.insert(0, 0)
+        self.topframe.entry13_3.delete(0, END)
+        self.topframe.entry13_3.insert(0, 0)
+
+        self.topframe.entry14_1.delete(0, END)
+        self.topframe.entry14_1.insert(0, 0)
+        self.topframe.entry14_2.delete(0, END)
+        self.topframe.entry14_2.insert(0, 0)
+        self.topframe.entry14_3.delete(0, END)
+        self.topframe.entry14_3.insert(0, 0)
+
+        self.topframe.entry15_1.delete(0, END)
+        self.topframe.entry15_1.insert(0, 0)
+        self.topframe.entry15_2.delete(0, END)
+        self.topframe.entry15_2.insert(0, 0)
+        self.topframe.entry15_3.delete(0, END)
+        self.topframe.entry15_3.insert(0, 0)
+
+        self.topframe.entry16_1.delete(0, END)
+        self.topframe.entry16_1.insert(0, 0)
+        self.topframe.entry16_2.delete(0, END)
+        self.topframe.entry16_2.insert(0, 0)
+        self.topframe.entry16_3.delete(0, END)
+        self.topframe.entry16_3.insert(0, 0)
+
+        self.topframe.entry17_1.delete(0, END)
+        self.topframe.entry17_1.insert(0, 0)
+        self.topframe.entry17_2.delete(0, END)
+        self.topframe.entry17_2.insert(0, 0)
+        self.topframe.entry17_3.delete(0, END)
+        self.topframe.entry17_3.insert(0, 0)
+
+        self.topframe.entry18_1.delete(0, END)
+        self.topframe.entry18_1.insert(0, 0)
+        self.topframe.entry18_2.delete(0, END)
+        self.topframe.entry18_2.insert(0, 0)
+        self.topframe.entry18_3.delete(0, END)
+        self.topframe.entry18_3.insert(0, 0)
+
+        self.topframe.entry19_1.delete(0, END)
+        self.topframe.entry19_1.insert(0, 0)
+        self.topframe.entry19_2.delete(0, END)
+        self.topframe.entry19_2.insert(0, 0)
+        self.topframe.entry19_3.delete(0, END)
+        self.topframe.entry19_3.insert(0, 0)
+
+        self.topframe.entry20_1.delete(0, END)
+        self.topframe.entry20_1.insert(0, 0)
+        self.topframe.entry20_2.delete(0, END)
+        self.topframe.entry20_2.insert(0, 0)
+        self.topframe.entry20_3.delete(0, END)
+        self.topframe.entry20_3.insert(0, 0)
+
+        self.topframe.entry_name.delete(0, END)
+        self.topframe.entry_name.insert(0, '')
+        self.topframe.entry_phone.delete(0, END)
+        self.topframe.entry_phone.insert(0, '')
+        self.topframe.entry_email.delete(0, END)
+        self.topframe.entry_email.insert(0, '')
+
+        self.edit("HT" + date() + "AN" + indexID(loadID()))
+
+    def query(self):
+        global viewer
+        viewer = Tk() 
+        viewer.title('Danh sách hóa đơn')
+        viewer.iconbitmap('managerlogo.ico')
+        viewer.geometry("500x600+50+50")
+        viewer.resizable(FALSE, FALSE)
+        
+        # Connect to database
+        connect = sqlite3.connect('data.db')
+        # Create a cursor
+        cursor = connect.cursor()
         # Query the database
         cursor.execute("SELECT *, oid FROM addresses")
         records = cursor.fetchall()
 
-        # Loop through results
+
+        # Create Treeview Frame
+        tree_frame = Frame(viewer)
+        tree_frame.pack(side="left", padx=10, pady=10)
+      
+        # Create Treeview
+        my_tree = ttk.Treeview(tree_frame, selectmode="extended", height=400)
+        # Pack to the screen
+        my_tree.pack(side="left", fill="both")
+
+        # Treeview Scrollbar
+        tree_scroll = ttk.Scrollbar(tree_frame, orient="vertical", command=my_tree.yview)
+        tree_scroll.pack(side=RIGHT, fill="y")
+        my_tree.configure(yscrollcommand=tree_scroll.set)
+
+        # Define Our Columns
+        my_tree['columns'] = ("ID", "Khách hàng", "SĐT", "Tổng tiền")
+        # Formate Our Columns
+        my_tree.column("#0", width=0, stretch=NO)
+        my_tree.column("ID", anchor=CENTER, width=120)
+        my_tree.column("Khách hàng", anchor=W, width=140)
+        my_tree.column("SĐT", anchor=CENTER, width=100)
+        my_tree.column("Tổng tiền", anchor=W, width=100)
+
+        # Create Headings 
+        my_tree.heading("#0", text="", anchor=W)
+        my_tree.heading("ID", text="ID", anchor=CENTER)
+        my_tree.heading("Khách hàng", text="Khách hàng", anchor=W)
+        my_tree.heading("SĐT", text="SĐT", anchor=CENTER)
+        my_tree.heading("Tổng tiền", text="Tổng tiền", anchor=W)
+
+        # Create striped row tags
+        my_tree.tag_configure('oddrow', background="#FFFFFF")
+        my_tree.tag_configure('evenrow', background="#FFE699")
+
+        global count
+        count = 0
         for record in records:
-            print(record)
+            if count % 2 == 0:
+                my_tree.insert(parent='', index='end', iid=count, text="", values=(record[64], record[0], record[1], record[63]), tags=('evenrow',))
+            else:
+                my_tree.insert(parent='', index='end', iid=count, text="", values=(record[64], record[0], record[1], record[63]), tags=('oddrow',))
+
+            count += 1
         
         # Commit changes
         connect.commit()
 
-    def edit(self): 
+    def edit(self, id): 
         global editor
         editor = Tk() 
         editor.title('Chỉnh sửa hóa đơn')
@@ -1272,7 +927,7 @@ class buttonFrame():
         cursor = connect.cursor()
         
         # Convert the ID into index number in database
-        record_id = str(int(self.id.get()[10:])) #HT290822NB0001
+        record_id = str(int(id[10:])) #HT290822AN0001
         
         # Query the database
         cursor.execute("SELECT * FROM addresses WHERE oid = " + record_id)
@@ -1677,6 +1332,13 @@ class buttonFrame():
         self.entry_email = ttk.Entry(self.myframe1, width=30, font=('Calibri(Body) 12'))
         self.entry_email.grid(row=29, column=0, padx=20, pady=(10,10), columnspan=2)
 
+        # Label: Tổng tiền
+        self.label_name = Label(self.myframe1, text="Tổng tiền: ", bg="#FFE699", font=('Calibri(Body) 11 bold '))
+        self.label_name.grid(row=30, column=0, pady=(10,10), sticky="w")
+        # Entry: Tổng tiền
+        self.entry_total = ttk.Entry(self.myframe1, width=30, font=('Calibri(Body) 12'))
+        self.entry_total.grid(row=31, column=0, padx=20, pady=(10,10), columnspan=2)
+
 
         for record in records:
             self.entry1_1.insert(0, record[3])
@@ -1762,22 +1424,25 @@ class buttonFrame():
             self.entry_name.insert(0, record[0])
             self.entry_phone.insert(0, record[1])
             self.entry_email.insert(0, record[2])
+            self.entry_total.insert(0, record[63])
             
         # Create the lower frame
         # self.wrapper4 = LabelFrame(editor, bd=5, bg="#FFE699")
         # self.wrapper4.pack(fill="both", expand="yes", padx=10, pady=10)
 
         # Button: Lưu thông tin
-        self.btn_save = Button(editor, text="Lưu thông tin", bg="#FF6600", fg="#000000", font=('Calibri(Body) 11 bold'), bd=5, highlightcolor="#000000", width=26, command=self.update)
+        self.btn_save = Button(editor, text="Lưu thông tin", bg="#FF6600", fg="#000000", font=('Calibri(Body) 11 bold'), bd=5, highlightcolor="#000000", width=26, command=lambda: self.update(id))
         self.btn_save.pack(fill="both", expand="yes", padx=10, pady=(5,10))
 
-    def update(self):
+    def update(self, id):
         # Create a database or connection to one
         connect = sqlite3.connect('data.db')
         # Create cursor (in a fuction)
         cursor = connect.cursor()
         # Convert the ID into index number in database
-        record_id = str(int(self.id.get()[10:])) #HT290822NB0001
+        record_id = str(int(id[10:])) #HT290822NB0001
+        # Update total cost 
+        totalCost = total_update(self.entry1_1.get(), self.entry1_2.get(), self.entry1_3.get()) + total_update(self.entry2_1.get(), self.entry2_2.get(), self.entry2_3.get())+total_update(self.entry3_1.get(), self.entry3_2.get(), self.entry3_3.get())+total_update(self.entry4_1.get(), self.entry4_2.get(), self.entry4_3.get())+total_update(self.entry5_1.get(), self.entry5_2.get(), self.entry5_3.get())+total_update(self.entry6_1.get(), self.entry6_2.get(), self.entry6_3.get())+total_update(self.entry7_1.get(), self.entry7_2.get(), self.entry7_3.get())+total_update(self.entry8_1.get(), self.entry8_2.get(), self.entry8_3.get())+total_update(self.entry9_1.get(), self.entry9_2.get(), self.entry9_3.get())+total_update(self.entry10_1.get(), self.entry10_2.get(), self.entry10_3.get())+total_update(self.entry11_1.get(), self.entry11_2.get(), self.entry11_3.get())+total_update(self.entry12_1.get(), self.entry12_2.get(), self.entry12_3.get())+total_update(self.entry13_1.get(), self.entry13_2.get(), self.entry13_3.get())+total_update(self.entry14_1.get(), self.entry14_2.get(), self.entry14_3.get())+total_update(self.entry15_1.get(), self.entry15_2.get(), self.entry15_3.get())+total_update(self.entry16_1.get(), self.entry16_2.get(), self.entry16_3.get())+total_update(self.entry17_1.get(), self.entry17_2.get(), self.entry17_3.get())+total_update(self.entry18_1.get(), self.entry18_2.get(), self.entry18_3.get())+total_update(self.entry19_1.get(), self.entry19_2.get(), self.entry19_3.get())+total_update(self.entry20_1.get(), self.entry20_2.get(), self.entry20_3.get())
 
         cursor.execute("""UPDATE addresses SET
             name = :name, phone = :phone, email = :email,
@@ -1800,7 +1465,8 @@ class buttonFrame():
             chanhDayDa1 = :chanhDayDa1, chanhDayDa2 = :chanhDayDa2, chanhDayDa3 = :chanhDayDa3,
             tacDaVien1 = :tacDaVien1, tacDaVien2 = :tacDaVien2, tacDaVien3 = :tacDaVien3,
             socola1 = :socola1, socola2 = :socola2, socola3 = :socola3, 
-            suaChuaDa1 = :suaChuaDa1, suaChuaDa2 = :suaChuaDa2, suaChuaDa3 = :suaChuaDa3
+            suaChuaDa1 = :suaChuaDa1, suaChuaDa2 = :suaChuaDa2, suaChuaDa3 = :suaChuaDa3,
+            totalCost = :totalCost
             WHERE oid = :oid""",
             {
                 'name': self.entry_name.get(), 'phone': self.entry_phone.get(), 'email': self.entry_email.get(),
@@ -1824,6 +1490,7 @@ class buttonFrame():
                 'tacDaVien1': self.entry18_1.get(), 'tacDaVien2': self.entry18_2.get(), 'tacDaVien3': self.entry18_3.get(),
                 'socola1': self.entry19_1.get(), 'socola2': self.entry19_2.get(), 'socola3': self.entry19_3.get(), 
                 'suaChuaDa1': self.entry20_1.get(), 'suaChuaDa2': self.entry20_2.get(), 'suaChuaDa3': self.entry20_3.get(),
+                'totalCost': totalCost,
 
                 'oid': record_id
             }
@@ -1834,8 +1501,97 @@ class buttonFrame():
         # Close the editor window
         editor.destroy()
 
-        
+    def delete(self, id):
+        # Create a connection
+        connect = sqlite3.connect('data.db') 
+        # Create cursor (in a fuction)
+        cursor = connect.cursor()
 
+        record_id = str(int(id[10:]))
+        # Delete a record
+        cursor.execute("DELETE from addresses WHERE oid=" + record_id) 
+
+        # Commit changes
+        connect.commit()
+
+
+mode = 0
+class Login(): 
+    def  __init__(self):  
+        self.login = Tk() # Create the root window
+        self.login.config(bg="#FFF2CC")
+        self.login.title("Coffee Selling Manager") # Create title of root window
+        self.login.iconbitmap("managerlogo.ico")
+        self.login.resizable(False, False)
+
+        self.username = StringVar()
+        self.password = StringVar()
+
+        self.check = 0
+        window_width = 1000
+        window_height = 650
+
+        # Get the screen dimension
+        screen_width = self.login.winfo_screenwidth()
+        screen_height = self.login.winfo_screenheight()
+        # Find the center point
+        center_x = int(screen_width/2 - window_width / 2)
+        center_y = int(screen_height/2 - window_height / 2)
+        # Set the position of the window to the center of the screen
+        self.login.geometry(f'{window_width}x{window_height}+{center_x}+{center_y-30}')
+
+        # Create heading
+        self.label_title = Label(self.login, text="HAI TUYEN'S COFFEE HOUSE", font= ('Roboto 30 bold'), bg="#FFFFFF", fg="#843C0C")
+        self.label_title.grid(row=0, column=0, columnspan=2, pady=(30,50), ipadx=232)
+
+
+        # Initialize login information
+        self.credentials = {'User Name': ['haituyen', 'tekyq7'], 'Password': ['1234', '1234']}
+        self.entryLst = []
+
+        # Label: 
+        self.label_username = Label(self.login, text="User Name:", bg="#FFF2CC", font=('Calibri(Body) 12'))
+        self.label_username.grid(row=1, column=0, padx=(350,0), pady=5)
+        self.ent_username = Entry(self.login, font=('Calibri(Body) 12'), textvariable=self.username)
+        self.ent_username.grid(row=1, column=1, padx=(0,350), pady=5)
+
+        self.label_password = Label(self.login, text="Password:", bg="#FFF2CC", font=('Calibri(Body) 12'))
+        self.label_password.grid(row=2, column=0, padx=(350,0), pady=5)
+        self.ent_password = Entry(self.login, font=('Calibri(Body) 12'), textvariable=self.password)
+        self.ent_password.grid(row=2, column=1, padx=(0,350), pady=5)
+
+        self.entryLst.append(self.username)
+        self.entryLst.append(self.password)
+
+        
+        # Login button
+        loginButton = Button(self.login, text="Đăng Nhập", bg="#FF6600", fg="#000000", font=('Calibri(Body) 11 bold'), bd=5, highlightcolor="#000000", command=self.validateLogin)
+        loginButton.grid(row=3, column=0, columnspan=2, pady=15, ipadx=50)  
+
+        # Add image
+        my_img = ImageTk.PhotoImage(Image.open("E:\TEKY\Product_HP1_HP3_SNLTW\coffee5.png"))
+        my_imgLabel = Label(self.login, image=my_img, highlightthickness=0, highlightcolor="#FFF2CC")
+        my_imgLabel.grid(row=4, column=0, columnspan=2)
+        self.login.mainloop()
+
+
+    def validateLogin(self):
+        user_entry = [entry.get() for entry in self.entryLst]
+        
+        for x in zip(*self.credentials.values()):
+            if list(x) == user_entry:
+                self.check = 1
+                self.login.destroy()
+                break
+
+        if self.check == 0:
+            self.popup()
+            self.login.destroy()
+                
+
+    def popup(self):
+        response = messagebox.showwarning("Cảnh báo", "Thông tin đăng nhập sai, chương trình sẽ kết thúc.") # String thứ 1: title của popup, string thứ 2: nội dung của popup
+        #Label(root, text=response).pack()
 
 
 def createDataBase(connect):
@@ -1861,75 +1617,34 @@ def createDataBase(connect):
         chanhDayDa1 int, chanhDayDa2 int, chanhDayDa3 int,
         tacDaVien1 int, tacDaVien2 int, tacDaVien3 int,
         socola1 int, socola2 int, socola3 int, 
-        suaChuaDa1 int, suaChuaDa2 int, suaChuaDa3 int
+        suaChuaDa1 int, suaChuaDa2 int, suaChuaDa3 int,
+        totalCost int, ID text
         )""") 
     
-# def submit(self):
-#     connect = sqlite3.connect('address_book.db') # Kết nối với database
-#     cursor = connect.cursor()
-
-#     # Insert into table
-#     cursor.execute("""INSERT INTO addresses VALUES (:name, :phone, :email,
-#         :phinSuaDa1 , :phinSuaDa2 , :phinSuaDa3 , 
-#         :phinDenDa1 , :phinDenDa2 , :phinDenDa3 ,
-#         :bacXiuDa1 , :bacXiuDa2 , :bacXiuDa3 ,
-#         :espresso1 , :espresso2 , :espresso3 ,
-#         :cappiccino1 , :cappiccino2 , :cappiccino3 ,
-#         :mocha1 , :mocha2 , :mocha3 ,
-#         :traSenVang1 , :traSenVang2 , :traSenVang3 , 
-#         :traThachDao1 , :traThachDao2 , :traThachDao3 , 
-#         :traThachVai1 , :traThachVai2 , :traThachVai3,
-#         :xanhDauDo1 , :xanhDauDo2 , :xanhDauDo3 , 
-#         :freezeTraXanh1 , :freezeTraXanh2 , :freezeTraXanh3 , 
-#         :freezeSocola1 , :freezeSocola2 , :freezeSocola3 , 
-#         :freezeCookies1 , :freezeCookies2 , :freezeCookies3 ,
-#         :freezeXanhDauDo1 , :freezeXanhDauDo2 , :freezeXanhDauDo3 , 
-#         :freezeClassicPhin1 , :freezeClassicPhin2 , :freezeClassicPhin3
-#         )""",
-# 			{
-# 				'name': bill.
-# 				'l_name': l_name.get(),
-# 				'address': address.get(),
-# 				'city': city.get(),
-# 				'state': state.get(),
-# 				'zipcode': zipcode.get()
-# 			})
-    
-    
-
-#     # Commit changes
-#     conn.commit()
-#     # Close database file, or close connection
-#     conn.close()
-
-#     # Clear the text boxes
-#     f_name.delete(0, END)
-#     l_name.delete(0, END)
-#     address.delete(0, END)
-#     city.delete(0, END)
-#     state.delete(0, END)
-#     zipcode.delete(0, END)
-
-
 
 if __name__ == "__main__": 
-    # Create a database or connection to one (in a fuction)
-    connect = sqlite3.connect('data.db')
-    # Create cursor (in a fuction)
-    cursor = connect.cursor()
+    login = Login()
+    if (login.check == 1):
+        # Create a database or connection to one (in a fuction)
+        connect = sqlite3.connect('data.db')
+        # Create cursor (in a fuction)
+        cursor = connect.cursor()
 
-    #createDataBase(connect)
+        #createDataBase(connect)
 
-    a = Manager()
-    topFrame = infoFrame(a.root)
-    topFrame.show()
-    lowFrame = buttonFrame(a.root, topFrame)
-    lowFrame.showButton()
+        a = Manager()
+        topFrame = infoFrame(a.root)
+        topFrame.show()
+        lowFrame = buttonFrame(a.root, topFrame)
+        lowFrame.showButton()
 
-    #Commit changes in database 
-    connect.commit()
-    #Close database
-    #connect.close()
-    mainloop()
+        #Commit changes in database 
+        connect.commit()
+        #Close database
+        #connect.close()
+        mainloop()
+
+    
+        
     
     
