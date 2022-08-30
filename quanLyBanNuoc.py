@@ -1,9 +1,79 @@
+from tabnanny import check
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 from PIL import ImageTk, Image
 import sqlite3
 import datetime
+
+def createDataBase(connect):
+    cursor = connect.cursor()
+    cursor.execute( """ CREATE TABLE addresses(
+        name text, phone text, email text,
+        phinSuaDa1 int, phinSuaDa2 int, phinSuaDa3 int, 
+        phinDenDa1 int, phinDenDa2 int, phinDenDa3 int,
+        bacXiuDa1 int, bacXiuDa2 int, bacXiuDa3 int,
+        espresso1 int, espresso2 int, espresso3 int,
+        cappiccino1 int, cappiccino2 int, cappiccino3 int,
+        mocha1 int, mocha2 int, mocha3 int,
+        traSenVang1 int, traSenVang2 int, traSenVang3 int, 
+        traThachDao1 int, traThachDao2 int, traThachDao3 int, 
+        traThachVai1 int, traThachVai2 int, traThachVai3 int,
+        xanhDauDo1 int, xanhDauDo2 int, xanhDauDo3 int, 
+        freezeTraXanh1 int, freezeTraXanh2 int, freezeTraXanh3 int, 
+        freezeSocola1 int, freezeSocola2 int, freezeSocola3 int, 
+        freezeCookies1 int, freezeCookies2 int, freezeCookies3 int,
+        freezeXanhDauDo1 int, freezeXanhDauDo2 int, freezeXanhDauDo3 int, 
+        freezeClassicPhin1 int, freezeClassicPhin2 int, freezeClassicPhin3 int,
+        chanhDaXay1 int, chanhDaXay2 int, chanhDaXay3 int,
+        chanhDayDa1 int, chanhDayDa2 int, chanhDayDa3 int,
+        tacDaVien1 int, tacDaVien2 int, tacDaVien3 int,
+        socola1 int, socola2 int, socola3 int, 
+        suaChuaDa1 int, suaChuaDa2 int, suaChuaDa3 int,
+        totalCost int, ID text
+        )""") 
+    
+
+def date():
+    date_res = '' 
+    today = datetime.datetime.today()
+    date_res += str(today.day)
+    month = str(today.month)
+    if (int(month) < 10):
+        month = '0'+str(today.month)
+    date_res += month
+    year = str(today.year)
+    date_res += year[2:]
+    return date_res
+
+record_glb = 0
+def loadID():
+    connect = sqlite3.connect('data.db')
+    cursor = connect.cursor()
+    global record_glb
+    try:
+        cursor.execute("SELECT *, oid FROM addresses")
+        records = cursor.fetchall()
+        for record in records:
+            record_glb = record[65]
+    except:
+        print("No data initialized")
+
+    connect.commit()
+    return record_glb
+
+def indexID(i):
+    if (i < 10):
+        return '000' + str(i)
+    elif (i < 100):
+        return '00' + str(i)
+    elif (i < 1000):
+        return '0' + str(i)
+    else:
+        return str(i)
+
+def total_update(s1, s2, s3):
+    return int(s1)*30+int(s2)*40+int(s3)*50
 
 
 class Manager():
@@ -535,47 +605,6 @@ class infoFrame():
 
 
 
-def date():
-    date_res = '' 
-    today = datetime.datetime.today()
-    date_res += str(today.day)
-    month = str(today.month)
-    if (int(month) < 10):
-        month = '0'+str(today.month)
-    date_res += month
-    year = str(today.year)
-    date_res += year[2:]
-    return date_res
-
-record_glb = 0
-def loadID():
-    connect = sqlite3.connect('data.db')
-    cursor = connect.cursor()
-    global record_glb
-    try:
-        cursor.execute("SELECT *, oid FROM addresses")
-        records = cursor.fetchall()
-        for record in records:
-            record_glb = record[65]
-    except:
-        print("No data initialized")
-
-    connect.commit()
-    return record_glb
-
-def indexID(i):
-    if (i < 10):
-        return '000' + str(i)
-    elif (i < 100):
-        return '00' + str(i)
-    elif (i < 1000):
-        return '0' + str(i)
-    else:
-        return str(i)
-
-def total_update(s1, s2, s3):
-    return int(s1)*30+int(s2)*40+int(s3)*50
-
 class buttonFrame(): 
     def __init__(self, root, topframe): 
         self.root = root
@@ -634,7 +663,7 @@ class buttonFrame():
 
     def submit(self):
         self.connect = sqlite3.connect('data.db') # Make connection to database
-        self.cursor = connect.cursor()
+        self.cursor = connect.cursor() # Create a cursor
 
         # Calculate the total cost of one bill
         for i in range(3,23):
@@ -691,7 +720,7 @@ class buttonFrame():
                     'totalCost': self.topframe.var[23], 'ID': self.entry_id_current.get()
                 })
 
-        connect.commit()
+        connect.commit() 
 
         # Update ID entry
         self.entry_id_current.delete(0, END)
@@ -1513,8 +1542,6 @@ class buttonFrame():
         # Commit changes
         connect.commit()
 
-
-mode = 0
 class Login(): 
     def  __init__(self):  
         self.login = Tk() # Create the root window
@@ -1593,33 +1620,7 @@ class Login():
         #Label(root, text=response).pack()
 
 
-def createDataBase(connect):
-    cursor = connect.cursor()
-    cursor.execute( """ CREATE TABLE addresses(
-        name text, phone text, email text,
-        phinSuaDa1 int, phinSuaDa2 int, phinSuaDa3 int, 
-        phinDenDa1 int, phinDenDa2 int, phinDenDa3 int,
-        bacXiuDa1 int, bacXiuDa2 int, bacXiuDa3 int,
-        espresso1 int, espresso2 int, espresso3 int,
-        cappiccino1 int, cappiccino2 int, cappiccino3 int,
-        mocha1 int, mocha2 int, mocha3 int,
-        traSenVang1 int, traSenVang2 int, traSenVang3 int, 
-        traThachDao1 int, traThachDao2 int, traThachDao3 int, 
-        traThachVai1 int, traThachVai2 int, traThachVai3 int,
-        xanhDauDo1 int, xanhDauDo2 int, xanhDauDo3 int, 
-        freezeTraXanh1 int, freezeTraXanh2 int, freezeTraXanh3 int, 
-        freezeSocola1 int, freezeSocola2 int, freezeSocola3 int, 
-        freezeCookies1 int, freezeCookies2 int, freezeCookies3 int,
-        freezeXanhDauDo1 int, freezeXanhDauDo2 int, freezeXanhDauDo3 int, 
-        freezeClassicPhin1 int, freezeClassicPhin2 int, freezeClassicPhin3 int,
-        chanhDaXay1 int, chanhDaXay2 int, chanhDaXay3 int,
-        chanhDayDa1 int, chanhDayDa2 int, chanhDayDa3 int,
-        tacDaVien1 int, tacDaVien2 int, tacDaVien3 int,
-        socola1 int, socola2 int, socola3 int, 
-        suaChuaDa1 int, suaChuaDa2 int, suaChuaDa3 int,
-        totalCost int, ID text
-        )""") 
-    
+
 
 if __name__ == "__main__": 
     login = Login()
